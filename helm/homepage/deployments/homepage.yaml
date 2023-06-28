@@ -31,11 +31,7 @@ spec:
       initContainers:
       - image: alpine/git
         name: git
-        command:
-        - git
-        - clone
-        - https://github.com/KaratsubaLabs/homepage
-        - /html
+        command: ['sh', '-c', 'apk add envsubst && apk add coreutils && mkdir -p /tmp && git clone https://github.com/KaratsubaLabs/homepage /tmp/homepage && cd /tmp/homepage && ./transgen && mv build/* /html']
         volumeMounts:
         - name: homepage-volume
           mountPath: /html
