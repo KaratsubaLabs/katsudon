@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: homepage-certificate
+  namespace: karatsuba
+spec:
+  secretName: homepage-ssl-secret
+  issuerRef:
+    name: acme-issuer
+    kind: ClusterIssuer
+  dnsNames:
+    - home.karatsubalabs.com

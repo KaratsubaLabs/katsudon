@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    kubernetes.io/metadata.name: karatsuba
+  name: karatsuba
+spec:
+  finalizers:
+  - kubernetes
+status:
+  phase: Active

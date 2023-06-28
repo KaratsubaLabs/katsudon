@@ -1,0 +1,23 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: homepage-ingress
+  namespace: karatsuba
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: home.karatsubalabs.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: homepage-service
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - home.karatsubalabs.com
+    secretName: homepage-ssl-secret
