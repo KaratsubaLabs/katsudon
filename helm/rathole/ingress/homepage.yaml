@@ -1,0 +1,23 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: rathole-ingress
+  namespace: karatsuba
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: tunnel.karatsubalabs.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: rathole-service
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - tunnel.karatsubalabs.com
+    secretName: rathole-ssl-secret
