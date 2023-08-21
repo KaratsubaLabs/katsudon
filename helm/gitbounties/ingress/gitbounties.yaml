@@ -1,0 +1,23 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gitbounties-ingress
+  namespace: karatsuba
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: gitbounties.karatsubalabs.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: gitbounties-service
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - gitbounties.karatsubalabs.com
+    secretName: gitbounties-ssl-secret

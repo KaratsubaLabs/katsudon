@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitbounties-surreal-deployment
+  namespace: karatsuba
+  labels:
+    app:
+      gitbounties-surreal
+spec:
+  selector:
+    matchLabels:
+      app: gitbounties-surreal
+  template:
+    metadata:
+      namespace: karatsuba
+      labels:
+        app: gitbounties-surreal
+    spec:
+      containers:
+      - name: gitbounties-surreal-db
+        image: surrealdb/surrealdb:latest
+        ports:
+          - containerPort: 8000
+        args: ["start", "--log", "debug", "--user", "admin", "--pass", "password", "memory"]
