@@ -20,12 +20,14 @@ spec:
       containers:
       - name: gitbounties-backend
         image: pinosaur/gitbounties_backend:latest
+        imagePullPolicy: Always
         ports:
           - containerPort: 3001
         envFrom:
           - secretRef:
               name: gitbounties-secret
         env:
-          - name: DB_URL
-            value: $(GITBOUNTIES_SURREAL_SERVICE_SERVICE_HOST):$(GITBOUNTIES_SURREAL_SERVICE_SERVICE_PORT)
-
+          - name: RUST_BACKTRACE
+            value: "1"
+          - name: RUST_LOG
+            value: gitbounties_backend,info

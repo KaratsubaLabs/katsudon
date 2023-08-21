@@ -22,14 +22,4 @@ spec:
         image: surrealdb/surrealdb:latest
         ports:
           - containerPort: 8000
-        args:
-          - start
-        env:
-          - name: LOG
-            value: debug
-          - name: USER
-            value: admin
-          - name: PASS
-            value: password
-          - name: DB_PATH
-            value: memory
+        args: ["start", "--log", "debug", "--user", "admin", "--pass", "password", "memory"]
