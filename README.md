@@ -3,7 +3,7 @@
 
 # かつどん // katsudon
 
-Port of [tonkatsu](https://github.com/MrPicklePinosaur/tonkatsu) to kubernetes
+Port of [tonkatsu](https://github.com/KaratsubaLabs/tonkatsu) to kubernetes
 
 </div>
 
